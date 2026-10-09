@@ -1,7 +1,7 @@
 # tests/test_inventory.py
 import pytest
-from inventory import Inventory
 
+from inventory import Inventory
 
 # ==============================================================================
 # ขั้นที่ 2: TDD สำหรับเมธอด low_stock_items(threshold) (6 กรณี)
