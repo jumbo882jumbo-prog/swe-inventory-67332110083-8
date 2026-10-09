@@ -78,7 +78,7 @@ def test_sell_success_basic():
     inv = Inventory()
     inv.add_item("Apple", 10, 20.0)
     remaining = inv.sell("Apple", 3)
-    assert remaining == 999
+    assert remaining == 7
 
 
 def test_sell_insufficient_stock_basic():
