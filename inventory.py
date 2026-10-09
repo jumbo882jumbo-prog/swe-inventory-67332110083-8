@@ -33,6 +33,8 @@ class Inventory:
         return self._items[name].quantity
 
     def sell(self, name: str, amount: int) -> int:
+        if not isinstance(amount, int) or isinstance(amount, bool):
+            raise TypeError("จำนวนที่ขายต้องเป็นจำนวนเต็ม")
         if name not in self._items:
             raise KeyError(f"ไม่พบสินค้า '{name}' ในระบบ")
         if amount <= 0:
@@ -49,3 +51,12 @@ class Inventory:
         return sum(
             item.quantity * item.price for item in self._items.values()
         )
+
+    def low_stock_items(self, threshold: int) -> list[str]:
+        """คืนรายชื่อสินค้าที่มีจำนวนคงเหลือ <= threshold โดยเรียงตามลำดับตัวอักษร"""
+        low_stock_names = [
+            item.name
+            for item in self._items.values()
+            if item.quantity <= threshold
+        ]
+        return sorted(low_stock_names)
