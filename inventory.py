@@ -33,6 +33,8 @@ class Inventory:
         return self._items[name].quantity
 
     def sell(self, name: str, amount: int) -> int:
+        if not isinstance(amount, int) or isinstance(amount, bool):
+            raise TypeError("จำนวนที่ขายต้องเป็นจำนวนเต็ม")
         if name not in self._items:
             raise KeyError(f"ไม่พบสินค้า '{name}' ในระบบ")
         if amount <= 0:
